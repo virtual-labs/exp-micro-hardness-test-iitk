@@ -21,10 +21,10 @@
     {
       "question": "2. The included angle in the Vickers hardness test is:",
       "answers": {
-        "a": "136<sub>o</sub>",
-        "b": "90<sub>o</sub>",
-        "c": "120<sub>o</sub>",
-        "d": "160<sub>o</sub>"
+        "a": "136o",
+        "b": "90o",
+        "c": "120o",
+        "d": "160o"
       },
       "explanations": {
         "a": "Explanation 1  <a href='www.google.com'>here</a>",
