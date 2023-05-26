@@ -17,7 +17,7 @@ where P is the applied load in kgf and d is the average diagonal length (see Fig
 <b>c. Rockwell hardness:</b> The Rockwell hardness test method consists of indenting the test material with a diamond cone or hardened steel ball indenter. The indenter is forced into the test material under a preliminary minor load Fo (Fig. 4a), usually 10 kgf. When equilibrium has reached, an indicating device, which follows the movements of the indenter and so responds to changes in depth of penetration of the indenter, is set to a datum position. While the preliminary minor load is still applied, an additional major load is applied resulting in an increase in the penetration (Fig. 4b). When equilibrium has reached again, the additional major load is removed but the preliminary minor load is still applied. Removal of the additional major load allows a partial recovery, reducing the depth of penetration (Fig. 4c). The permanent increase in the depth of penetration, resulting from the application and removal of the additional major load is used to calculate the Rockwell hardness number (HR). Rockwell indenter automatically provides values of hardness.<br><br>
 The steps involved in the Rockwell hardness test are shown in Fig. 5. Table 1 shows the data pertaining to regular Rockwell indenter. <br><br>
 <image src="images/image4.png"><br><br>
-Rockwell hardness value is given by, HR = E - e 
+Rockwell hardness value is given by, HR = E - e <br><br>
 <image src="images/image5.png"><br><br>
 <image src="images/image6.png">
 
