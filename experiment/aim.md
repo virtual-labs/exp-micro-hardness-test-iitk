@@ -1,1 +1,1 @@
-### Aim of the experiment
+### To understand the working and components of a standard hardness system. Also, to utilize this system to conduct hardness testing of materials.
