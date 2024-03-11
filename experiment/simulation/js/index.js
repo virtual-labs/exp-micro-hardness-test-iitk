@@ -1,27 +1,13 @@
 const charts = {};
-const DATA_UPDATE_ANIMATION_DELAY = 600;
+const DATA_UPDATE_ANIMATION_DELAY = 400;
 // in seconds
-const time = [
-  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
-  32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
-  61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
-];
+const time = [0];
 
 // in nm
-const penetrationDepth = [
-  49, 192, 300, 387, 473, 542, 628, 659, 725, 785, 839, 887, 940, 987, 1040, 1095, 1189, 1193, 1237, 1278, 1326, 1406,
-  1444, 1491, 1494, 1529, 1568, 1608, 1674, 1712, 1738, 1751, 1750, 1754, 1760, 1763, 1767, 1769, 1773, 1774, 1769,
-  1754, 1743, 1732, 1719, 1704, 1689, 1679, 1664, 1646, 1634, 1621, 1606, 1595, 1577, 1561, 1541, 1525, 1507, 1488,
-  1473, 1453, 1434, 1411, 1387, 1364, 1331, 1290, 1287, 1220, 1093, 845, 646, 501,
-];
+const penetrationDepth = [49];
 
 // in mN
-const force = [
-  7, 43, 77, 109, 143, 175, 209, 227, 261, 293, 327, 359, 393, 425, 459, 494, 557, 560, 592, 626, 660, 724, 756, 790,
-  793, 827, 859, 893, 956, 991, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 982, 947, 912, 881, 846,
-  814, 780, 746, 714, 680, 648, 614, 579, 547, 513, 481, 447, 412, 381, 346, 315, 280, 246, 214, 180, 148, 114, 79, 77,
-  45, 11, 1, 0, 0,
-];
+const force = [7];
 
 var currPos = 0;
 var currentStepProgress = 1;
@@ -41,7 +27,7 @@ function handle() {
 function handleStep1() {
   let pane = document.getElementById("step1");
 
-  if (!mit1.isActive() && !mit2.isActive()) {
+  if (!mit1.isActive() && !mit2.isActive() && !mit3.isActive()) {
     alert("Please select a machine first!");
     return;
   }
@@ -59,7 +45,7 @@ function handleStep1() {
 function handleStep2() {
   let pane = document.getElementById("step2");
 
-  if (!mit1.isSampleLoaded() && !mit2.isSampleLoaded()) {
+  if (!mit1.isSampleLoaded() && !mit2.isSampleLoaded() && !mit3.isSampleLoaded()) {
     alert("Please load the sample in the machine first!");
     return;
   }
@@ -67,24 +53,133 @@ function handleStep2() {
   pane.classList.add("done");
   pane.classList.remove("active");
 
-  //plot blank graph init graphs
-  plotGraph(
-    document.getElementById("outputGraphA").getContext("2d"),
-    {
-      labels: time,
-      datasets: [
-        {
-          data: [],
-          borderColor: "#3e95cd",
-          fill: false,
-        },
-      ],
-    },
-    "Time (s)",
-    "Penetration Depth (nm)"
-  );
 
-  document.getElementById("btnNext").disabled = true;
+  //if (utm) utm.destory();
+  // if (vickers) vickers.init();
+  // if (sample1) sample1.init();
+  // if (!vickers || !vickers.isActive()) {
+  //   alert("Please take Vickers Tester from menu first!");
+  //   return;
+  // }
+
+  // if (!vickers.isSampleLoaded()) {
+  //   alert("Please load the sample on the Vickers Tester first!");
+  //   return;
+  // }
+
+  let images = [{}];
+
+  if (mit1.isActive()) {
+    if (CURRENT_SAMPLE === "brass") {
+      images = [
+        { time: " Time - 0h", url: "images/results/Brass_Vickers_25 gf_1.jpg" },
+        { time: "Time - 0.5h", url: "images/results/Brass_Vickers_50 gf_1.jpg" },
+
+        // Add more images as needed
+      ];
+    } else if (CURRENT_SAMPLE == "steel") {
+      images = [
+        { time: "Time - 1h", url: "images/results/MS_Vickers_100 gf_1.jpg" },
+        { time: "Time - 1h", url: "images/results/MS_Vickers_50 gf_1.jpg" },
+        // Add more images as needed
+      ];
+    } else {
+      images = [
+        { time: " Time - 0h", url: "images/results/Al_Vickers_500 gf_2 (7).jpg" },
+        { time: "Time - 0.5h", url: "images/results/Al_Vickers_500 gf_1(40).jpg" },
+        { time: "Time - 1h", url: "images/results/Al_Vickers_500 gf_3(24).jpg" },
+        // Add more images as needed
+      ];
+    }
+  }
+  if (mit2.isActive()) {
+    images = [
+      { time: "Time - 1h", url: "images/results/MS_Brinell_250 kgf_1.jpg" },
+      { time: "Time - 1h", url: "images/results/MS_Brinell_250 kgf_2.jpg" },
+      // Add more images as needed
+    ];
+  }
+
+  //   if(CURRENT_SAMPLE== "ste")
+  // }
+
+  // Find the table element where the images will be displayed
+  let imageTable = document.getElementById("imageTable");
+  let startTest = document.getElementById("startTest");
+
+  // Define the event listener for the "Start Test" button
+  startTest.addEventListener("click", (e) => {
+    e.currentTarget.disabled = true;
+    document.getElementById("btnNext").disabled = true;
+    e.currentTarget.innerHTML = "Running...";
+
+    // Call the function to display images with delay
+    displayImagesWithDelay(images);
+    e.currentTarget.innerHTML = "Done";
+  });
+
+  // Function to display images with delay
+  function displayImagesWithDelay(images) {
+    // Find the table element where the images will be displayed
+    let imageTable = document.getElementById("imageTable");
+
+    // Variable to track the index of the current image
+    let currentIndex = 0;
+
+    // Function to display the next image
+    function displayNextImage() {
+      if (currentIndex < images.length) {
+        let image = images[currentIndex];
+        let row = imageTable.insertRow(); // Create a new row
+
+        // Create cells for time and image
+        let timeCell = row.insertCell(0);
+        let imageCell = row.insertCell(1);
+
+        // Set the time in the first column
+        timeCell.innerHTML = image.time;
+
+        // Create an image element and set its attributes
+        let img = document.createElement("img");
+        img.src = image.url;
+        img.width = 200; // Set image width (adjust as needed)
+        img.height = 150; // Set image height (adjust as needed)
+
+        // Append the image to the second column
+        imageCell.appendChild(img);
+
+        // Increment the index for the next image
+        currentIndex++;
+
+        // Schedule to display the next image after a delay
+        setTimeout(displayNextImage, 5000); // Change the delay time as needed (currently 5 seconds)
+      }
+    }
+
+    // Start displaying images
+    displayNextImage();
+  }
+
+  // Call the function to display images with delay
+
+  //plot blank graph init graphs
+  // plotGraph(
+  //   document.getElementById("outputGraphA").getContext("2d"),
+  //   {
+  //     labels: time,
+  //     datasets: [
+  //       {
+  //         data: [],
+  //         borderColor: "#3e95cd",
+  //         fill: false,
+  //       },
+  //     ],
+  //   },
+  //   "Time (s)",
+  //   "Penetration Depth (nm)"
+  // );
+
+  document.getElementById("btnNext").disabled = false;
 
   document.getElementById("startTest").addEventListener("click", (e) => {
     let tableBody = document.getElementById("testData");
@@ -101,46 +196,141 @@ function handleStep2() {
         document.getElementById("btnNext").disabled = false;
         return;
       }
+      let Sn = [];
+      let sample_d = [];
+      let d1 = [];
+      let d2 = [];
+      let HV = [];
+      let Load = [];
+      let average = [];
 
-      tableBody.innerHTML += `
-            <tr>
-              <td>${time[currPos]}</td>
-              <td>${penetrationDepth[currPos]}</td>
-              <td>${force[currPos]}</td>
-            </tr>
-          `;
+      if (mit1.isActive()) {
+        if (CURRENT_SAMPLE === "aluminium") {
+          Sn = [1, 2, 3];
+          sample_d = ["Al_Vickers_500 gf_1(40)", "Al_Vickers_500 gf_2 (7)", "Al_Vickers_500 gf_3(24)"];
+          d1 = [74.92, 77.58, 73.93];
+          d2 = [74.01, 75.65, 75.26];
+          Load = [0.5, 0.5, 0.5];
+          HV = [167.22, 157.96, 166.62];
+          average = [74.46, 76.61, 74.6];
+
+          for (let i = 0; i < d1.length; i++) {
+            tableBody.innerHTML += `
+                      <tr>
+                          <td>${Sn[i]}</td>
+                          <td>${sample_d[i]}</td>
+                          <td>${d1[i]}</td>
+                          <td>${d2[i]}</td>
+                          <td>${average[i]}</td>
+                          <td>${Load[i]}</td>
+                          <td>${HV[i]}</td>
+                      </tr>
+                  `;
+          }
+        } else if (CURRENT_SAMPLE === "brass") {
+          Sn = [1, 2];
+          sample_d = ["Brass_Vickers_25 gf_1", "Brass_Vickers_50 gf_1"];
+          d1 = [16.47, 17.75];
+          d2 = [21.09, 23.84];
+          Load = [0.025, 0.05];
+          HV = [131.44, 214.44];
+          average = [18.78, 20.79];
+
+          for (let i = 0; i < d1.length; i++) {
+            tableBody.innerHTML += `
+                    <tr>
+                        <td>${Sn[i]}</td>
+                        <td>${sample_d[i]}</td>
+                        <td>${d1[i]}</td>
+                        <td>${d2[i]}</td>
+                        <td>${average[i]}</td>
+                        <td>${Load[i]}</td>
+                        <td>${HV[i]}</td>
+                    </tr>
+                `;
+          }
+        } else {
+          Sn = [1, 2];
+          sample_d = ["MS_Vickers_100 gf_1", "MS_Vickers_50 gf_1"];
+          d1 = [23.44, 16.51];
+          d2 = [31.04, 20.71];
+          Load = [0.1, 0.05];
+          HV = [249.84, 267.76];
+          average = [27.24, 18.61];
+
+          for (let i = 0; i < d1.length; i++) {
+            tableBody.innerHTML += `
+                  <tr>
+                      <td>${Sn[i]}</td>
+                      <td>${sample_d[i]}</td>
+                      <td>${d1[i]}</td>
+                      <td>${d2[i]}</td>
+                      <td>${average[i]}</td>
+                      <td>${Load[i]}</td>
+                      <td>${HV[i]}</td>
+                  </tr>
+              `;
+          }
+        }
+      }
+      if (mit2.isActive()) {
+        const dataTable = document.querySelector(".dataTable table thead tr td:nth-child(7)");
+        if (dataTable) {
+          dataTable.textContent = "HBN"; // Update the text content with your desired value
+        }
+
+        Sn = [1, 2];
+        sample_d = ["MS_Brinell_250 kgf_1", "MS_Brinell_250 kgf_2"];
+        d1 = [1089.31, 1082.0];
+        d2 = [1080.12, 1078.0];
+        Load = [250.0, 250.0];
+        HV = [269.87, 272.24];
+        average = [1084.72, 1080.0];
+
+        for (let i = 0; i < d1.length; i++) {
+          tableBody.innerHTML += `
+                <tr>
+                    <td>${Sn[i]}</td>
+                    <td>${sample_d[i]}</td>
+                    <td>${d1[i]}</td>
+                    <td>${d2[i]}</td>
+                    <td>${average[i]}</td>
+                    <td>${Load[i]}</td>
+                    <td>${HV[i]}</td>
+                </tr>
+            `;
+        }
+      }
+
       currPos++;
 
-      let progress1 = (penetrationDepth.length / totalSteps) * currPos;
-      plotGraph(
-        document.getElementById("outputGraphA").getContext("2d"),
-        {
-          labels: time,
-          datasets: [
-            {
-              yAxisID: "A",
-              data: penetrationDepth.slice(0, progress1),
-              borderColor: "#3e95cd",
-              fill: false,
-              label: "Penetration Depth",
-            },
-            {
-              yAxisID: "B",
-              data: force.slice(0, progress1),
-              borderColor: "brown",
-              fill: false,
-              label: "Force",
-            },
-          ],
-        },
-        "Penetration Depth (nm)",
-        "Time (s)"
-      );
+      //let progress1 = (penetrationDepth.length / totalSteps) * currPos;
+      // plotGraph(
+      //   document.getElementById("outputGraphA").getContext("2d"),
+      //   {
+      //     labels: time,
+      //     datasets: [
+      //       {
+      //         yAxisID: "A",
+      //         data: penetrationDepth.slice(0, progress1),
+      //         borderColor: "#3e95cd",
+      //         fill: false,
+      //         label: "Penetration Depth",
+      //       },
+      //       {
+      //         yAxisID: "B",
+      //         data: force.slice(0, progress1),
+      //         borderColor: "brown",
+      //         fill: false,
+      //         label: "Force",
+      //       },
+      //     ],
+      //   },
+      //   "Penetration Depth (nm)",
+      //   "Time (s)"
+      // );
     }, DATA_UPDATE_ANIMATION_DELAY);
   });
-
-  pane.classList.add("done");
-  pane.classList.remove("active");
 
   let next = document.getElementById("step3");
   next.classList.add("active");
@@ -167,12 +357,6 @@ function handleStep4() {
 
   pane.classList.add("done");
   pane.classList.remove("active");
-
-  let next = document.getElementById("step5");
-  next.classList.add("active");
-  next.classList.remove("disabled");
-
-  currentStepProgress = 5;
 
   modal = new Modal({
     title: "Can you answer the questions?",

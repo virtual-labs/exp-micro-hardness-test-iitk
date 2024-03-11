@@ -21,18 +21,21 @@
         <div class="nav-content">
           <div id="instr" class="nav-pane active">
             <div id="accordion" class="accordion">
-              
               <div id="step1" class="box active">
                 <div class="label">Step 1: Select Machine</div>
-                <div class="content" style="display: flex; flex-wrap: wrap">
+                <div class="content" style="display: flex; flex-wrap: wrap;">
                   <div class="p-1 pointer" onclick="loadMachine('mit1')" title="Click to select this machine.">
-                    <img src="images/mit/mit1.png" alt="" width="60" height="116" />
+                    <img src="images/mit/mit1.png" alt="" height="120" />
                     <h6>Vikers Machine</h6>
                   </div>
                   <div class="p-1 pointer" onclick="loadMachine('mit2')" title="Click to select this machine.">
-                    <img src="images/mit/mit2.png" alt="" width="60"/>
+                    <img src="images/mit/mit2.png" alt="" height="120" />
                     <h6>Birnell Machine</h6>
                   </div>
+                  <!-- <div class="p-1 pointer" onclick="loadMachine('mit3')" title="Click to select this machine.">
+                    <img src="images/mit/mit3.png" alt="" height="120" />
+                    <h6>Rockwell Machine</h6>
+                  </div> -->
                 </div>
               </div>
 
@@ -53,7 +56,6 @@
                   </div>
                 </div>
               </div>
-
               <div id="step3" class="box disabled">
                 <div class="label">Step 3: Start the test.</div>
                 <div class="content">
@@ -64,15 +66,38 @@
                     <button id="startTest">Start Test</button>
                   </div>
 
-                  <canvas id="outputGraphA"></canvas>
+                  <!-- Table to display images -->
 
+                  <div class="mt-1 dataTable">
+                    <table id="imageTable">
+                      <thead>
+                        <tr>
+                          <th>Time (in hrs)</th>
+                          <th>Indent Impressions</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
+                  <ul>
+                    <li>Perform d1 & d2 measurement from indent impressions of Al alloy.</li>
+                  </ul>
+                </div>
+              </div>
+              <div id="step4" class="box disabled">
+                <div class="label">Step 4: Results.</div>
+                <div class="content">
                   <div class="mt-1 dataTable">
                     <table>
                       <thead>
                         <tr>
-                          <td>Time (s)</td>
-                          <td>Penetration Depth (nm)</td>
-                          <td>Force (mN)</td>
+                          <td>S. No</td>
+                          <td>Sample Designation</td>
+                          <td>d1 (µm)</td>
+                          <td>d2 (µm)</td>
+                          <td>Average d (µm)</td>
+                          <td>Load in (kgf)</td>
+                          <td>HV</td>
                         </tr>
                       </thead>
                       <tbody id="testData"></tbody>
@@ -81,21 +106,10 @@
                 </div>
               </div>
 
-              <div id="step4" class="box disabled">
-                <div class="label">Step 4: Results.</div>
-                <div class="content">
-                  <p>Indention Point Scaled view</p>
-                  <div>
-                    <img src="images/results/output.bmp" alt="" style="width: 100%" />
-                  </div>
-                </div>
-              </div>
-
               <div id="step5" class="box disabled">
                 <div class="label">Step 5: Activity</div>
                 <div class="content">Click next button to continue.</div>
               </div>
-
             </div>
 
             <div class="actions">

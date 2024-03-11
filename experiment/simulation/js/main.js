@@ -9,6 +9,7 @@ var ctx;
 
 var mit1 = null;
 var mit2 = null;
+var mit3= null;
 var vc = null;
 var sample = null;
 var samplePath = null;
@@ -23,6 +24,7 @@ function init(machineName) {
   ctx.lineWidth = 1.5;
   mit1 = new MIT(canvas, ctx);
   mit2 = new MIT2(canvas, ctx);
+  mit3= new MIT3(canvas, ctx);
 
   sample = Sample(canvas, ctx);
 
@@ -65,6 +67,7 @@ function init(machineName) {
 
     if (mit1) mit1.paint();
     if (mit2) mit2.paint();
+    if (mit3) mit3.paint();
     if (sample) sample.paint();
 
     // footer text
@@ -90,18 +93,21 @@ function resize() {
 function onMouseDownHandler(event) {
   if (mit1) mit1.onMouseDownHandler(event);
   if (mit2) mit2.onMouseDownHandler(event);
+  if (mit3) mit3.onMouseDownHandler(event);
   if (sample) sample.onMouseDownHandler(event);
 }
 
 function onMouseMoveHandler(event) {
   if (mit1) mit1.onMouseMoveHandler(event);
   if (mit2) mit2.onMouseMoveHandler(event);
+  if (mit3) mit3.onMouseMoveHandler(event);
   if (sample) sample.onMouseMoveHandler(event);
 }
 
 function onMouseUpHandler(event) {
   if (mit1) mit1.onMouseUpHandler(event);
   if (mit2) mit2.onMouseUpHandler(event);
+  if (mit3) mit3.onMouseUpHandler(event);
   if (sample) sample.onMouseUpHandler(event);
 }
 
@@ -111,6 +117,7 @@ function onContextMenuHandler(event) {
 
   if (mit1) mit1.onContextMenuHandler(event);
   if (mit2) mit2.onContextMenuHandler(event);
+  if (mit3) mit3.onContextMenuHandler(event);
   if (sample) sample.onContextMenuHandler(event);
 }
 
@@ -120,6 +127,7 @@ function onClickHandler(event) {
 
   if (mit1) mit1.onClickHandler(event);
   if (mit2) mit2.onClickHandler(event);
+  if (mit3) mit3.onClickHandler(event);
   if (sample) sample.onClickHandler(event);
 }
 
@@ -129,6 +137,7 @@ function onMouseWheelHandler(event) {
 
   if (mit1) mit1.onMouseWheelHandler(event);
   if (mit2) mit2.onMouseWheelHandler(event);
+  if (mit3) mit3.onMouseWheelHandler(event);
   if (sample) sample.onMouseWheelHandler(event);
 }
 
@@ -140,6 +149,9 @@ function onElementDrop(event) {
       break;
     case "mit2Machine":
       mit2.init();
+      break;
+     case "mit3Machine":
+      mit3.init();
       break;
     case "sample":
       sample.init();
@@ -257,17 +269,25 @@ function loadSample(name) {
   sample.init();
   if(mit1) mit1.unLoadSample();
   if(mit2) mit2.unLoadSample();
+  if(mit3) mit3.unLoadSample();
 }
 
 function loadMachine(name) {
   if (name == "mit1") {
     if (mit1) mit1.init();
     if(mit2) mit2.destroy();
+    if(mit3) mit3.destroy();
   }
 
   if (name == "mit2") {
     if(mit1) mit1.destroy();
+    if (mit3) mit3.destroy();
     if (mit2) mit2.init();
+  }
+  if (name == "mit3") {
+    if(mit2) mit2.destroy();
+    if(mit1) mit1.destroy();
+    if (mit3) mit3.init();
   }
 
   ctx.refresh();
