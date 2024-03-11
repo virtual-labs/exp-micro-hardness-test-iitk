@@ -1,8 +1,7 @@
-### Theory of experiment:<br><br>
 <b>Brief Description of the Equipment/Machine: </b><br>
-<b>a. Brinell hardness tester:</b> The Brinell hardness tester is shown in Fig. 1a. The Brinell hardness test method consists of indenting the test material with a 10 mm diameter hardened steel or carbide ball subjected to a load of 3000 kg. For softer materials, the load can be reduced to 1500 kg or 500 kg to avoid excessive indentation. <br>
-<b>b. Vickers hardness tester:</b> The Vickers indenter is shown in Fig. 1b. A very small diamond indenter having pyramidal geometry is used for indentation. This tester provides automatic measurement of hardness from the measured lengths of diagonals of indentation impression.<br>
-<b>c. Rockwell hardness tester:</b> The Rockwell hardness tester is shown in Fig. 1c. The indenter consists of diamond cone indenter.<br> 
+<b>a. Brinell hardness tester:</b> The Brinell hardness tester is shown in Fig. 1a. The Brinell hardness test method consists of indenting the test material with a 10 mm diameter hardened steel or carbide ball subjected to a load of 3000 kg. For softer materials, the load can be reduced to 1500 kg or 500 kg to avoid excessive indentation. <br><br>
+<b>b. Vickers hardness tester:</b> The Vickers indenter is shown in Fig. 1b. A very small diamond indenter having pyramidal geometry is used for indentation. This tester provides automatic measurement of hardness from the measured lengths of diagonals of indentation impression.<br><br>
+<b>c. Rockwell hardness tester:</b> The Rockwell hardness tester is shown in Fig. 1c. The indenter consists of diamond cone indenter.<br> <br>
 <image src="images/image 1.png"><br><br>
 <b>Theory:</b> In general, hardness (H) is calculated by applied load (P) divided by the surface area (A) of the indentation impression, i.e., H = P/A.<br> 
 <b>a. Brinell hardness:</b> The diameters (d<sub>1</sub> and d<sub>2</sub>) of the impression left by the indenter in the test material is measured using a microscope, as shown in Fig. 2. Brinell hardness (in BHN) is given by:<br>
