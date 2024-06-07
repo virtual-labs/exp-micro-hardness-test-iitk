@@ -4,16 +4,134 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mechanical Metallurgy Lab</title>
+    <title>Experiment 8</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script>
+      var SAMPLE_ASSETS_PATH = "images/sample/";
+    </script>
   </head>
   <body>
-    <h1>List of Experiments</h1>
-    <ol>
-      <li>
-        <h3>
-          <a href="experiments/0" target="_blank">Take tour of lab environment</a>
-        </h3>
-      </li>
-    </ol>
+    <div id="app">
+      <div class="menu">
+        <div class="nav-tabs">
+          <!-- <div class="nav-item active" data-target="#tools">Tools</div> -->
+          <div class="nav-item active" data-target="#instr">Instructions</div>
+        </div>
+
+        <div class="nav-content">
+          <div id="instr" class="nav-pane active">
+            <div id="accordion" class="accordion">
+              <div id="step1" class="box active">
+                <div class="label">Step 1: Select Machine</div>
+                <div class="content" style="display: flex; flex-wrap: wrap;">
+                  <div class="p-1 pointer" onclick="loadMachine('mit1')" title="Click to select this machine.">
+                    <img src="images/mit/mit1.png" alt="" height="120" />
+                    <h6>Vickers  Machine</h6>
+                  </div>
+                  <div class="p-1 pointer" onclick="loadMachine('mit2')" title="Click to select this machine.">
+                    <img src="images/mit/mit2.png" alt="" height="120" />
+                    <h6>Brinell  Machine</h6>
+                  </div>
+                  <!-- <div class="p-1 pointer" onclick="loadMachine('mit3')" title="Click to select this machine.">
+                    <img src="images/mit/mit3.png" alt="" height="120" />
+                    <h6>Rockwell Machine</h6>
+                  </div> -->
+                </div>
+              </div>
+
+              <div id="step2" class="box disabled">
+                <div class="label">Step 2: Select Sample</div>
+                <div class="content" style="display: flex; flex-wrap: wrap">
+                  <div class="p-1 pointer" onclick="loadSample('steel')" title="Click to select this sample.">
+                    <img  src="images/sample/steel/logo.png" alt="" width="60" />
+                    <h6>Mild Steel Sample</h6>
+                  </div>
+                  <div class="p-1 pointer" onclick="loadSample('aluminium')" title="Click to select this sample.">
+                    <img id="sample0" src="images/sample/aluminium/logo.png" alt="" width="60" />
+                    <h6 id="text0" >Aluminium Sample</h6>
+                  </div>
+                  <div class="p-1 pointer" onclick="loadSample('brass')" title="Click to select this sample.">
+                    <img id="sample1" src="images/sample/brass/logo.png" alt="" width="60" />
+                    <h6 id="text1">Brass Sample</h6>
+                  </div>
+                  
+                </div>
+              </div>
+              <div id="step3" class="box disabled">
+                <div class="label">Step 3: Start the test.</div>
+                <div class="content">
+                  <ul>
+                    <li>Click below buttons to start the machine.</li>
+                  </ul>
+                  <div class="mt-1">
+                    <button id="startTest">Start Test</button>
+                    <button onclick="reset()"> Next Sample  </button>
+                  </div>
+
+                  <!-- Table to display images -->
+
+                  <div class="mt-1 dataTable">
+                    <table id="imageTable">
+                      <thead>
+                        <tr>
+                          <th>Indents</th>
+                          <th>Indent Impressions</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
+                  <ul>
+                    <li id="sample_name"></li>
+                  </ul>
+                </div>
+              </div>
+              <div id="step4" class="box disabled">
+                <div class="label">Step 4: Results.</div>
+                <div class="content">
+                  <div class="mt-1 dataTable">
+                    <table>
+                      <thead>
+                        <tr>
+                          <td>S. No</td>
+                          <td>Sample Designation</td>
+                          <td>d1 (µm)</td>
+                          <td>d2 (µm)</td>
+                          <td>Average d (µm)</td>
+                          <td>Load in (kgf)</td>
+                          <td>HV</td>
+                        </tr>
+                      </thead>
+                      <tbody id="testData"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div id="step5" class="box disabled">
+                <div class="label">Step 5: Activity</div>
+                <div class="content">Click next button to continue.</div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button class="btn" id="btnNext" onclick="handle()">Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider" id="slider"></div>
+      <div class="main">
+        <canvas class="dropzone" id="gui">Your browser does not support the HTML5 canvas tag.</canvas>
+      </div>
+    </div>
+
+    <script src="js/context.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
+    <script src="js/index.js"></script>
   </body>
 </html>
