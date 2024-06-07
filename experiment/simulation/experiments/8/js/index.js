@@ -26,7 +26,18 @@ function handle() {
 
 function handleStep1() {
   let pane = document.getElementById("step1");
-
+  if(mit2.isActive()){
+  document.getElementById("sample0").style.visibility=  "hidden";
+  document.getElementById("sample1").style.visibility=  "hidden";
+  document.getElementById("text0").style.visibility=  "hidden";
+  document.getElementById("text1").style.visibility=  "hidden";
+  }
+  else{
+    document.getElementById("sample0").style.visibility=  "visible";
+    document.getElementById("sample1").style.visibility=  "visible";
+    document.getElementById("text0").style.visibility=  "visible";
+    document.getElementById("text1").style.visibility=  "visible";
+  }
   if (!mit1.isActive() && !mit2.isActive() && !mit3.isActive()) {
     alert("Please select a machine first!");
     return;
@@ -72,30 +83,30 @@ function handleStep2() {
   if (mit1.isActive()) {
     if (CURRENT_SAMPLE === "brass") {
       images = [
-        { time: " Time - 0h", url: "images/results/Brass_Vickers_25 gf_1.jpg" },
-        { time: "Time - 0.5h", url: "images/results/Brass_Vickers_50 gf_1.jpg" },
+        { time: "Indent-1", url: "images/results/Brass_Vickers_25 gf_1.jpg" },
+        { time: "Indent-2", url: "images/results/Brass_Vickers_50 gf_1.jpg" },
 
         // Add more images as needed
       ];
     } else if (CURRENT_SAMPLE == "steel") {
       images = [
-        { time: "Time - 1h", url: "images/results/MS_Vickers_100 gf_1.jpg" },
-        { time: "Time - 1h", url: "images/results/MS_Vickers_50 gf_1.jpg" },
+        { time: "Indent-1", url: "images/results/MS_Vickers_100 gf_1.jpg" },
+        { time: "Indent-2", url: "images/results/MS_Vickers_50 gf_1.jpg" },
         // Add more images as needed
       ];
     } else {
       images = [
-        { time: " Time - 0h", url: "images/results/Al_Vickers_500 gf_2 (7).jpg" },
-        { time: "Time - 0.5h", url: "images/results/Al_Vickers_500 gf_1(40).jpg" },
-        { time: "Time - 1h", url: "images/results/Al_Vickers_500 gf_3(24).jpg" },
+        { time: "Indent-1", url: "images/results/Al_Vickers_500 gf_2 (7).jpg" },
+        { time:"Indent-2", url: "images/results/Al_Vickers_500 gf_1(40).jpg" },
+        { time:"Indent-3", url: "images/results/Al_Vickers_500 gf_3(24).jpg" },
         // Add more images as needed
       ];
     }
   }
   if (mit2.isActive()) {
     images = [
-      { time: "Time - 1h", url: "images/results/MS_Brinell_250 kgf_1.jpg" },
-      { time: "Time - 1h", url: "images/results/MS_Brinell_250 kgf_2.jpg" },
+      { time:"Indent-1", url: "images/results/MS_Brinell_250 kgf_1.jpg" },
+      { time: "Indent-2", url: "images/results/MS_Brinell_250 kgf_2.jpg" },
       // Add more images as needed
     ];
   }
@@ -116,6 +127,9 @@ function handleStep2() {
     // Call the function to display images with delay
     displayImagesWithDelay(images);
     e.currentTarget.innerHTML = "Done";
+    const btn=  document.getElementById("startTest");
+    console.log(btn);
+    btn.style.visibility= "hidden";
   });
 
   // Function to display images with delay
@@ -206,8 +220,9 @@ function handleStep2() {
 
       if (mit1.isActive()) {
         if (CURRENT_SAMPLE === "aluminium") {
+          document.getElementById("sample_name").innerHTML= "Perform d1 & d2 measurement from indent impressions of Al alloy";
           Sn = [1, 2, 3];
-          sample_d = ["Al_Vickers_500 gf_1(40)", "Al_Vickers_500 gf_2 (7)", "Al_Vickers_500 gf_3(24)"];
+          sample_d = ["Indent-1", "Indent-2", "Indent-3"];
           d1 = [74.92, 77.58, 73.93];
           d2 = [74.01, 75.65, 75.26];
           Load = [0.5, 0.5, 0.5];
@@ -228,8 +243,9 @@ function handleStep2() {
                   `;
           }
         } else if (CURRENT_SAMPLE === "brass") {
+          document.getElementById("sample_name").innerHTML= "Perform d1 & d2 measurement from indent impressions of brass alloy";
           Sn = [1, 2];
-          sample_d = ["Brass_Vickers_25 gf_1", "Brass_Vickers_50 gf_1"];
+          sample_d = ["Indent-1", "Indent-2"];
           d1 = [16.47, 17.75];
           d2 = [21.09, 23.84];
           Load = [0.025, 0.05];
@@ -250,8 +266,9 @@ function handleStep2() {
                 `;
           }
         } else {
+          document.getElementById("sample_name").innerHTML= "Perform d1 & d2 measurement from indent impressions of MS alloy";
           Sn = [1, 2];
-          sample_d = ["MS_Vickers_100 gf_1", "MS_Vickers_50 gf_1"];
+          sample_d = ["Indent-1", "Indent-2"];
           d1 = [23.44, 16.51];
           d2 = [31.04, 20.71];
           Load = [0.1, 0.05];
@@ -274,13 +291,14 @@ function handleStep2() {
         }
       }
       if (mit2.isActive()) {
+        document.getElementById("sample_name").innerHTML= "Perform d1 & d2 measurement from indent impressions of MS alloy";
         const dataTable = document.querySelector(".dataTable table thead tr td:nth-child(7)");
         if (dataTable) {
           dataTable.textContent = "HBN"; // Update the text content with your desired value
         }
 
         Sn = [1, 2];
-        sample_d = ["MS_Brinell_250 kgf_1", "MS_Brinell_250 kgf_2"];
+        sample_d = ["Indent-1", "Indent-2"];
         d1 = [1089.31, 1082.0];
         d2 = [1080.12, 1078.0];
         Load = [250.0, 250.0];
@@ -464,7 +482,25 @@ function handleStep5() {
   document.getElementById("btnNext").innerText = "Done";
   // currentStepProgress = 6;
 }
-
+function reset(){
+   currentStepProgress =1;
+   document.querySelectorAll(".box").forEach((e)=>{
+    e.classList.add("disalbed")
+    e.classList.remove("active");
+    e.classList.remove("done");
+   })
+   const first_box= document.querySelector(".box");
+first_box.classList.add("active");
+first_box.classList.remove("disabled");
+if (mit1.isActive()){
+  mit1.destroy();
+ mit1.unLoadSample();
+}
+if (mit2.isActive()){
+  mit2.destroy();
+ mit2.unLoadSample();
+}
+}
 function plotGraph(graphCtx, data, labelX, labelY) {
   let chartObj = charts[graphCtx.canvas.id];
   if (chartObj) {
