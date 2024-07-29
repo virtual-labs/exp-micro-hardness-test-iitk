@@ -1,5 +1,8 @@
 Step 1: Select Machine
+
 In this step, the user is presented with two options: the Vickers Machine and the Brinell Machine. The user can click on the image of the desired machine to select it.
+
+In this step, the user is presented with two options: the Vikers Machine and the Birnell Machine. The user can click on the image of the desired machine to select it
 
 Step 2: Select Sample
 In this step, the user is presented with three sample options: Aluminium, Brass, and Mild Steel. The user can click on the image of the desired sample to select it.
