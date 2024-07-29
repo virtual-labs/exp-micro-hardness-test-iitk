@@ -1,0 +1,90 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "1. The Vickers hardness in HV if the load applied is 100 grams and indentation size (diagonal length) is 43 microns (choose one of the closest one)?",
+      "answers": {
+        "a": "100",
+        "b": "400",
+        "c": "980",
+        "d": "1280"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "2. Rockwell hardness is measured by measuring the:",
+      "answers": {
+        "a": "Diameter of indentation",
+        "b": "Projected area of Indentation",
+        "c": "Depth of penetration of indenter",
+        "d": "Rebound height of indenter"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "3. If the load applied is 3000 kgf, ball diameter is 10 mm, and indent impression diameter is 3 mm, the Brinell hardness (in BHN) is",
+      "answers": {
+        "a": "1245",
+        "b": "415",
+        "c": "208",
+        "d": "520"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "4. The Brinell hardness testing uses",
+      "answers": {
+        "a": "Tungsten Carbide sphere",
+        "b": "Steel cone",
+        "c": "Diamond cone",
+        "d": "Diamond pyramid"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which of the following test provide measurements of surface property? ",
+      "answers": {
+        "a": "Tensile test",
+        "b": "Fatigue test",
+        "c": "Impact test",
+        "d": "Hardness test"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    }
+  ]
+}

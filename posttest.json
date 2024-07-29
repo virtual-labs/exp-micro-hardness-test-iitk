@@ -1,0 +1,90 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "1. The Vickers hardness in MPa if the load applied is 100 grams and indentation size (diagonal length) is 43 microns (choose one of the closest one)?",
+      "answers": {
+        "a": "100",
+        "b": "400",
+        "c": "980",
+        "d": "1280"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "2. The included angle in the Vickers hardness test is:",
+      "answers": {
+        "a": "136°",
+        "b": "90°",
+        "c": "120°",
+        "d": "160°"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "3. Rockwell indenter uses:",
+      "answers": {
+        "a": "Diamond pyramid",
+        "b": "Diamond cone",
+        "c": "Steel cone",
+        "d": "Tungsten carbide ball"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Penetration Indicated by each unit in dial in Rockwell test",
+      "answers": {
+        "a": "0.2 mm",
+        "b": "0.02 mm",
+        "c": "0.002 mm",
+        "d": "0.0002 mm"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "If the length of the two diagonals in Vickers hardness test is 100 µm and 110 µm, then what is the average diagonal length?",
+      "answers": {
+        "a": "105 µm",
+        "b": "210 µm",
+        "c": "100 µm",
+        "d": "110 µm"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    }
+  ]
+}
